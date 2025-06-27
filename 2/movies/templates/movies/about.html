@@ -1,0 +1,16 @@
+{% extends 'movies/_base.html' %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About</title>
+</head>
+    <body>
+        {% block content%}
+        <h1>I like action movies! </h1>
+        {% load static %}
+            <img style="width: 200px;" src="{% static 'movies/monster.jpg' %}" alt="About me picture">
+        {% endblock %}
+    </body>
+</html>
