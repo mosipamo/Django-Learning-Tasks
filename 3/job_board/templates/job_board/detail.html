@@ -1,0 +1,20 @@
+{% load humanize %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+    <body>
+        <ul>
+            <li>{{job_postings.title|title}}</li>
+            <li>{{job_postings.company}}</li>
+            <li>${{job_postings.salary|intcomma}}</li>
+            <li>Active? {{job_postings.is_active}}</li>
+            <hr>
+            <li>{{job_postings.description}}</li>
+        </ul>
+    </body>
+</html>
