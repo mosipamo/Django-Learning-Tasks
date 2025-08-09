@@ -1,0 +1,93 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ profile.name }} - CV</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="icon" href="{% static 'favicon.ico' %}">
+</head>
+<body>
+    <div class="container">
+        <div class="profile-section">
+            <div class="profile-image">
+                <img src="{{ profile.profile_image.url }}" alt="{{ profile.name }}">
+            </div>
+            <h1 class="name">{{ profile.name }}</h1>
+            <h2 class="title">{{ profile.title }}</h2>
+        </div>
+
+        <div class="content-sections">
+            <div class="section">
+                <div class="section-label">/About</div>
+                <div class="section-content">
+                    <p>{{ profile.bio | linebreaksbr }}</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-label">/Projects</div>
+                <div class="section-content">
+                    {% for project in projects %}
+                        <p>
+                            <a href="{{ project.url }}" class="link" target="_blank">{{ project.title }}</a> <br>
+                            {{ project.description }}
+                        </p>
+                    {% empty %}
+                        <p>No projects to display.</p>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-label">/Education</div>
+                <div class="section-content">
+                    <ul>
+                        {% for edu in educations %}
+                            <li>
+                                {{ edu.content | linebreaks }}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-label">/CV</div>
+                <div class="section-content">
+                    <p>To Download my latest CV, click <a href="{{ cvs.cv_file.url }} " class="link" target="_blank">here</a></p>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-label">/Contact</div>
+                <div class="section-content">
+                    <p>Hit me up on <a href="http://www.linkedin.com/in/mohammad-sina-parvizi" class="link" target="_blank">LinkedIn</a>, shoot me an  <a href="mailto:sina.sipamo@gmail.com" class="link" target="_blank">email</a>, or just say hey.</p>
+                    <p>{{ profile.contact_text }}</p>
+                    <p class="signature">— {{ profile.name }}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="social-buttons">
+            {% for link in social_links %}
+            <a href="{{ link.url }}" class="social-btn" target="_blank">
+                <i class="{{ link.icon_style }} fa-{{ link.icon_name }}"></i>
+                {{ link.name }}
+            </a>
+            {% endfor %}
+        </div>
+
+        <footer class="footer">
+            <div class="footer-content">
+                <span>{{ profile.footer_text }}</span>
+                <div class="signature-logo">{{ profile.name }}</div>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
