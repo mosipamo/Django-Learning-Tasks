@@ -118,18 +118,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 STATIC_URL = '/static/'
-# پوشه‌ای که فایل‌های استاتیک در آن جمع‌آوری می‌شوند (برای محیط Production)
 STATIC_ROOT = BASE_DIR / 'staticfiles'
-# پوشه‌هایی که جنگو باید برای فایل‌های استاتیک در حالت Development جستجو کند.
-# توجه: نام پوشه را به 'static' تغییر دادم.
 STATICFILES_DIRS = [
     BASE_DIR / 'static',
 ]
 
 # --- Media files (User-uploaded content like images and PDFs) ---
-# آدرس URL برای فایل‌های رسانه‌ای
 MEDIA_URL = '/media/'
-# مسیر فیزیکی پوشه 'media'
 MEDIA_ROOT = BASE_DIR / 'media'
 
 
